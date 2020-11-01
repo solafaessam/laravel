@@ -17,9 +17,12 @@ Route::get('/', function () {
     return view('pages.contactUs');
 });
 
-Route::get('/contactus', function () {
-    return view('pages.contactUs');
+Route::get('/contact_us', function () {
+    $name='ali';
+    return view('pages.contactUs', compact('name'));
 });
 
-
-
+Route::post('/send', function (\Illuminate\Http\Request $request) {
+    $name= $request->name;
+    return view('pages.contactUs', compact('name'));
+})->name('send');
